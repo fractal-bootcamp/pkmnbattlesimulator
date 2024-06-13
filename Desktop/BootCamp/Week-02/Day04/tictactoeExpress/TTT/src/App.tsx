@@ -15,6 +15,7 @@ function Squares({ value, onSquareClick }) {
 export function TicTacToe() {
   const [squares, setSquares] = useState(Array(9).fill(null))
 
+
   function onClickHandle(n) {
 
     // declare a var nextSquares that will slice() the array squares
@@ -51,6 +52,8 @@ export function TicTacToe() {
     </>
   )
 }
+
+
 
 const NamePlate = () => {
   const [name, setName] = useState("")
