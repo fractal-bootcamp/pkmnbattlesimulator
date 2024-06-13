@@ -4,50 +4,49 @@ import './App.css'
 
 
 
-function Squares({ value, onSquaresClick }) {
+function Squares({ value, onSquareClick }) {
 
   return (
-    <button className="square" onClick={onSquaresClick} >{value}</button>
+    <button className="square" onClick={onSquareClick}
+    >{value}</button>
   )
 }
 
 export function TicTacToe() {
   const [squares, setSquares] = useState(Array(9).fill(null))
 
-  console.log("tic tac toe re-rendered")
+  function onClickHandle(n) {
 
-  function handleOnClick() {
     // declare a var nextSquares that will slice() the array squares
     const nextSquares = squares.slice();
     //the var nexSquares will slice [0] in the array squares and replace null with "X" value
-    nextSquares[0] = "X";
+    nextSquares[n] = "X";
     // the function setSquares will actualize the useState of squares to nextSquares
     //in this sense, everything but squares.slice() in 0 with new value "X" will be
     //still the same
     setSquares(nextSquares)
-
   }
 
   return (
     <>
       <h2>Tic Tac Toe</h2>
       <div>
-        <Squares value={squares[0]} onSquaresClick={handleOnClick} />
-        <Squares value={squares[1]} />
-        <Squares value={squares[2]} />
+        <Squares value={squares[0]} onSquareClick={() => onClickHandle(0)} />
+        <Squares value={squares[1]} onSquareClick={() => onClickHandle(1)} />
+        <Squares value={squares[2]} onSquareClick={() => onClickHandle(2)} />
       </div>
 
       <div>
-        <Squares value={squares[3]} />
-        <Squares value={squares[4]} />
-        <Squares value={squares[5]} />
+        <Squares value={squares[3]} onSquareClick={() => onClickHandle(3)} />
+        <Squares value={squares[4]} onSquareClick={() => onClickHandle(4)} />
+        <Squares value={squares[5]} onSquareClick={() => onClickHandle(5)} />
       </div>
 
       <div>
-        <Squares value={squares[6]} />
-        <Squares value={squares[7]} />
-        <Squares value={squares[8]} />
-      </div>
+        <Squares value={squares[6]} onSquareClick={() => onClickHandle(6)} />
+        <Squares value={squares[7]} onSquareClick={() => onClickHandle(7)} />
+        <Squares value={squares[8]} onSquareClick={() => onClickHandle(8)} />
+      </div >
 
     </>
   )
